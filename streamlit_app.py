@@ -77,7 +77,13 @@ with st.expander("By Race", expanded=False):
     st.altair_chart(alt.Chart(filtered_df).mark_bar().encode(
         x=alt.X('race:N', title='Race'),
         y=alt.Y('count():Q', stack='normalize', title='Proportion'),
-        color=alt.Color('two_year_recid:N', title='Recidivated'),
+        color=alt.Color(
+    'two_year_recid:N',
+    title='Recidivated',
+    legend=alt.Legend(
+        labelExpr="datum.label == 0 ? 'No' : 'Yes'"
+    )
+),
         tooltip=['race', 'two_year_recid', 'count()']
     ).properties(width=400, height=300), use_container_width=True)
 
@@ -101,7 +107,13 @@ with st.expander("By Age Group", expanded=False):
     st.altair_chart(alt.Chart(filtered_df).mark_bar().encode(
         x=alt.X('age_group:N', title='Age Group'),
         y=alt.Y('count():Q', stack='normalize', title='Proportion'),
-        color=alt.Color('two_year_recid:N', title='Recidivated'),
+        color=alt.Color(
+    'two_year_recid:N',
+    title='Recidivated',
+    legend=alt.Legend(
+        labelExpr="datum.label == 0 ? 'No' : 'Yes'"
+    )
+),
         tooltip=['age_group', 'two_year_recid', 'count()']
     ).properties(width=400, height=300), use_container_width=True)
 
@@ -125,7 +137,13 @@ with st.expander("By Gender", expanded=False):
     st.altair_chart(alt.Chart(filtered_df).mark_bar().encode(
         x=alt.X('sex:N', title='Gender'),
         y=alt.Y('count():Q', stack='normalize', title='Proportion'),
-        color=alt.Color('two_year_recid:N', title='Recidivated'),
+        color=alt.Color(
+    'two_year_recid:N',
+    title='Recidivated',
+    legend=alt.Legend(
+        labelExpr="datum.label == 0 ? 'No' : 'Yes'"
+    )
+),
         tooltip=['sex', 'two_year_recid', 'count()']
     ).properties(width=400, height=300), use_container_width=True)
 
